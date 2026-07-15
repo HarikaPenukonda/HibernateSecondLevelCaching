@@ -4,4 +4,29 @@
   <artifactId>hibernate</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>SecondLevelCaching</name>
+  <dependencies>
+	   <!-- Source: https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+	<dependency>
+	    <groupId>org.hibernate.orm</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>5.6.15.Final</version>
+	    <scope>compile</scope>
+	</dependency>
+	
+	<!-- Source: https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-ehcache</artifactId>
+	    <version>5.6.15.Final</version>
+	    <scope>compile</scope>
+	</dependency>
+		  
+	  <!-- To use ecache dependency, we need to use Hibernate 5.6.15 version-->
+	  <dependency>
+	    <groupId>org.ehcache</groupId>
+	    <artifactId>ehcache</artifactId>
+	    <version>3.12.0</version>
+	</dependency>
+	  
+  </dependencies>
 </project>
