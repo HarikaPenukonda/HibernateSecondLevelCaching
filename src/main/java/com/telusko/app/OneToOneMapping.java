@@ -27,18 +27,21 @@ public class OneToOneMapping {
 		
 		transaction = session.beginTransaction();
 		
-		Question q1 = new Question();
-		q1.setId(102);
-		q1.setQuestion("What is Java?");
+//		Question q1 = new Question();
+//		q1.setId(102);
+//		q1.setQuestion("What is Java?");
+//		
+//		Answer a1 = new Answer();
+//		a1.setId(222);
+//		a1.setAnswer("Java is a pprogramming language");
+//		q1.setAnswer(a1);
 		
-		Answer a1 = new Answer();
-		a1.setId(222);
-		a1.setAnswer("Java is a pprogramming language");
-		q1.setAnswer(a1);
+		Question find_question = session.find(Question.class, 101);
+		System.out.println(find_question); // Question [id=101, question=What is your name?, answer=Answer [id=111, answer=My name is Micheal Scott]]
 		
 		try {	
 			transaction = session.beginTransaction();
-			session.persist(q1);
+			//session.persist(q1);
 			flag = true;
 			
 		} catch (HibernateException e) {
