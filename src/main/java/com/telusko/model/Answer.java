@@ -32,6 +32,11 @@ public class Answer {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+
+	@Override
+	public String toString() {
+		return "Answer [id=" + id + ", answer=" + answer + "]";
+	}
 	
 	
 	

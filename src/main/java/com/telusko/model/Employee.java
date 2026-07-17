@@ -3,6 +3,8 @@ package com.telusko.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Employee {
@@ -18,8 +20,9 @@ public class Employee {
 	 @Column(name = "salary")
 	 private double salary;
 	 
-//	 @Column(name = "department_id")
-//	 private Department department;
+	 @ManyToOne
+	 @JoinColumn(name = "department_id")
+	 private Department department;
 
 	public Employee() {
 		System.out.println("zero parameterized constructor - employee");
@@ -49,18 +52,21 @@ public class Employee {
 		this.salary = salary;
 	}
 
-//	public Department getDepartment() {
-//		return department;
-//	}
-//
-//	public void setDepartment(Department department) {
-//		this.department = department;
-//	}
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 
 	@Override
 	public String toString() {
-		return "Employee [employeeName=" + employeeName + ", salary=" + salary + "]";
+		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", salary=" + salary
+				+ ", department=" + department + "]";
 	}
+
+	
 	
 	
 	 
