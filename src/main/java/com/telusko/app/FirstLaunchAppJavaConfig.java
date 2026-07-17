@@ -1,5 +1,6 @@
 package com.telusko.app;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,38 +12,37 @@ public class FirstLaunchAppJavaConfig {
 
 	public static void main(String[] args) {
 		
-		// step 1 - configuration object
-		Configuration configuration = new Configuration();
+		Configuration configuration = null;
+		SessionFactory sessionFactory = null;
+		Session session = null;
+		Transaction transaction = null;
+		boolean flag = false;
 		
-		// step 2 - configure hibernate.cfg.xml file to the configuration object
-		// configuration.configure(); - Not needed since there is no hibernate.cfg.xml file
 		
-		// register entity class
+		configuration = new Configuration();
 		configuration.addAnnotatedClass(Student.class);
+		sessionFactory = configuration.buildSessionFactory();
+		session = sessionFactory.openSession();
+		Student student = new Student("Micheal Scott",44, "scottm@gmail.com");
 		
-		// step 3 - Create session factory
-		SessionFactory sessionFactory = configuration.buildSessionFactory();
-		
-		// step 4 - create a new session
-		Session session = sessionFactory.openSession();
-		
-		// step 5 - Begin the transaction within session (non-select statements)
-		Transaction transaction = session.beginTransaction();
-		
-		// step 6 - Create student object
-		Student student = new Student("Penny",19,"peanny@gmail.com");
-		
-		// step 7 - Perform operation - create
-		// If you're using Hibernate 6.x, the save() method has been removed from the main API.
-		session.persist(student);
-		
-		// Step 8 - performing transaction operation
-		transaction.commit();
-		
-		// step 9 - closing the session
-		session.close();
-		
-		
+		try {	
+			transaction = session.beginTransaction();
+			session.persist(student);
+			flag = true;
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			System.out.println(e);
+		}finally {
+			if(flag == true) {
+				transaction.commit();
+			}else {
+				transaction.rollback();
+			}
+			session.close();
+			sessionFactory.close();
+		}
 	}
 
 }
