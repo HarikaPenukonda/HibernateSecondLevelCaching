@@ -23,7 +23,7 @@ public class FirstLaunchAppJavaConfig {
 		configuration.addAnnotatedClass(Student.class);
 		sessionFactory = configuration.buildSessionFactory();
 		session = sessionFactory.openSession();
-		Student student = new Student("Micheal Scott",44, "scottm@gmail.com");
+		Student student = new Student("Jim Halpert",35, "halpertj@gmail.com");
 		
 		try {	
 			transaction = session.beginTransaction();
