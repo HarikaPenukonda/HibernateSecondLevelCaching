@@ -30,47 +30,55 @@ public class ManyToManyMapping {
 		
 		transaction = session.beginTransaction();
 		
-		
-		Courses c1 = new Courses();
-		c1.setCourseName("Introduction to computer programming");
-		c1.setPrice(99.99);
-		
-		Courses c2 = new Courses();
-		c2.setCourseName("Algorithm Design");
-		c2.setPrice(199.99);
-		
-		Courses c3 = new Courses();
-		c3.setCourseName("Language Based systems");
-		c3.setPrice(299.99);
-		
-		Set<Courses> set1 = new HashSet<Courses>();
-		set1.add(c1);
-		set1.add(c2);
-		set1.add(c3);
-		
-		
-		Set<Courses> set2 = new HashSet<Courses>();
-		set2.add(c1);
-		set2.add(c3);
-		
-		
-		Students s1 = new Students();
-		s1.setStudent_name("Hayley");
-		s1.setCourses(set2);
-		
-		Students s2 = new Students();
-		s2.setStudent_name("Alex");
-		s2.setCourses(set1);
-		
-		Students s3 = new Students();
-		s3.setStudent_name("Luke");
-		s3.setCourses(set2);
+//		Courses c1 = new Courses();
+//		c1.setCourseName("Introduction to computer programming");
+//		c1.setPrice(99.99);
+//		
+//		Courses c2 = new Courses();
+//		c2.setCourseName("Algorithm Design");
+//		c2.setPrice(199.99);
+//		
+//		Courses c3 = new Courses();
+//		c3.setCourseName("Language Based systems");
+//		c3.setPrice(299.99);
+//		
+//		Set<Courses> set1 = new HashSet<Courses>();
+//		set1.add(c1);
+//		set1.add(c2);
+//		set1.add(c3);
+//		
+//		
+//		Set<Courses> set2 = new HashSet<Courses>();
+//		set2.add(c1);
+//		set2.add(c3);
+//		
+//		
+//		Students s1 = new Students();
+//		s1.setStudent_name("Hayley");
+//		s1.setCourses(set2);
+//		
+//		Students s2 = new Students();
+//		s2.setStudent_name("Alex");
+//		s2.setCourses(set1);
+//		
+//		Students s3 = new Students();
+//		s3.setStudent_name("Luke");
+//		s3.setCourses(set2);
 		
 		try {	
 			transaction = session.beginTransaction();
-			session.persist(s1);
-			session.persist(s2);
-			session.persist(s3);
+//			session.persist(s1);
+//			session.persist(s2);
+//			session.persist(s3);
+			
+			// get a student and their coursework information
+			Students student = session.find(Students.class, 1);
+			System.out.println(student.getStudent_name());
+			
+			for(Courses c : student.getCourses()) {
+				System.out.println(c.getCourseName());
+			}
+			
 			flag = true;
 			
 		} catch (HibernateException e) {
