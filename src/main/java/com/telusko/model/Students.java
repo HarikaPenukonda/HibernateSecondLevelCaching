@@ -5,18 +5,17 @@ import java.util.Set;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Students {
 	
 	@Id
-	@GeneratedValue(generator = "my_seq",strategy = GenerationType.AUTO)
-	@SequenceGenerator(name="my_seq", sequenceName = "My_OwnSequence", initialValue = 1, allocationSize = 1)
+	//@GeneratedValue(generator = "my_seq",strategy = GenerationType.AUTO)
+	//@SequenceGenerator(name="my_seq", sequenceName = "My_OwnSequence", initialValue = 1, allocationSize = 1)
 	@Column(name="student_id")
 	private int student_id;
 	
@@ -24,6 +23,10 @@ public class Students {
 	private String student_name;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(
+		name = "Students_Courses",
+		joinColumns = @JoinColumn(name="student_id"),
+		inverseJoinColumns = @JoinColumn(name="course_id"))
 	private Set<Courses> courses;
 
 	
