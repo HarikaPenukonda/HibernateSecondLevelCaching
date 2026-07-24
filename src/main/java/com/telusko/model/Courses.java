@@ -26,7 +26,7 @@ public class Courses {
 	private List<Students> students;
 
 	public Courses() {
-		System.out.println("zero parameter constructor - courses");
+		//System.out.println("zero parameter constructor - courses");
 	}
 
 	public int getCourseid() {
@@ -61,6 +61,13 @@ public class Courses {
 		this.students = students;
 	}
 
+	@Override
+	public String toString() {
+		return "Courses [courseid=" + courseid + ", courseName=" + courseName + ", price=" + price + ", students="
+				+ students + "]";
+	}
+
+	
 	
 	
 	

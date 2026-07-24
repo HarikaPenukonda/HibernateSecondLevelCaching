@@ -31,7 +31,7 @@ public class Students {
 
 	
 	public Students() {
-		System.out.println("zero parameterised constructor - student");
+		//System.out.println("zero parameterised constructor - student");
 	}
 
 	public int getStudent_id() {

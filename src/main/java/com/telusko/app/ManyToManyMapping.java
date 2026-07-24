@@ -30,30 +30,30 @@ public class ManyToManyMapping {
 		
 		transaction = session.beginTransaction();
 		
-		Courses c1 = new Courses();
-		c1.setCourseid(107);
-		c1.setCourseName("Intro to React Library");
-		c1.setPrice(199.99);
-
-		Set<Courses> set1 = new HashSet<Courses>();
-		set1.add(c1);
-
-		Students s1 = new Students();
-		s1.setStudent_id(7);
-		s1.setStudent_name("Rueben");
-		s1.setCourses(set1);
+//		Courses c1 = new Courses();
+//		c1.setCourseid(107);
+//		c1.setCourseName("Intro to React Library");
+//		c1.setPrice(199.99);
+//
+//		Set<Courses> set1 = new HashSet<Courses>();
+//		set1.add(c1);
+//
+//		Students s1 = new Students();
+//		s1.setStudent_id(7);
+//		s1.setStudent_name("Rueben");
+//		s1.setCourses(set1);
 		
 		try {	
 			transaction = session.beginTransaction();
-			session.persist(s1);
+			//session.persist(s1);
 			
 			// get a student and their coursework information
-//			Students student = session.find(Students.class, 1);
-//			System.out.println((student));
+			Students student = session.find(Students.class, 1);
+			System.out.println((student.getStudent_name()));
 			
-//			for(Courses c : student.getCourses()) {
-//				System.out.println(c.getCourseName());
-//			}
+			for(Courses c : student.getCourses()) {
+				System.out.println(c.getCourseName());
+			}
 			
 			// get course info and students who took that course
 //			Courses course = session.find(Courses.class, 101);
