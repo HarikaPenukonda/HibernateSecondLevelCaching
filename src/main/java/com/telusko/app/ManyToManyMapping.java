@@ -48,16 +48,21 @@ public class ManyToManyMapping {
 			//session.persist(s1);
 			
 			// get a student and their coursework information
-			Students student = session.find(Students.class, 1);
-			System.out.println((student.getStudent_name()));
-			
-			for(Courses c : student.getCourses()) {
-				System.out.println(c.getCourseName());
-			}
+//			Students student = session.find(Students.class, 1);
+//			System.out.println((student.getStudent_name()));
+//			
+//			for(Courses c : student.getCourses()) {
+//				System.out.println(c.getCourseName());
+//			}
 			
 			// get course info and students who took that course
-//			Courses course = session.find(Courses.class, 101);
-//			System.out.println(course);
+			Courses course = session.find(Courses.class, 101);
+			System.out.println(course.getCourseName());
+			
+			for(Students s : course.getStudents()) {
+				System.out.println("-------------");
+				System.out.println(s.getStudent_name());
+			}
 			
 			flag = true;
 			

@@ -22,7 +22,7 @@ public class Courses {
 	@Column(name="course_price")
 	private double price;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="courses")
 	private List<Students> students;
 
 	public Courses() {
@@ -61,11 +61,11 @@ public class Courses {
 		this.students = students;
 	}
 
-	@Override
-	public String toString() {
-		return "Courses [courseid=" + courseid + ", courseName=" + courseName + ", price=" + price + ", students="
-				+ students + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Courses [courseid=" + courseid + ", courseName=" + courseName + ", price=" + price + ", students="
+//				+ students + "]";
+//	}
 
 	
 	
