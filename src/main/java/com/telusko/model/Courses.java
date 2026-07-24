@@ -49,6 +49,12 @@ public class Courses {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+	@Override
+	public String toString() {
+		return "Courses [courseid=" + courseid + ", courseName=" + courseName + ", price=" + price + "]";
+	}
+	
 	
 	
 	

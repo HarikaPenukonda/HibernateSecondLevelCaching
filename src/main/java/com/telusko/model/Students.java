@@ -54,6 +54,12 @@ public class Students {
 	public void setCourses(Set<Courses> courses) {
 		this.courses = courses;
 	}
+
+	@Override
+	public String toString() {
+		return "Students [student_id=" + student_id + ", student_name=" + student_name + ", courses=" + courses + "]";
+	}
+	
 	
 	
 	
