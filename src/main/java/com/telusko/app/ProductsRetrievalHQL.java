@@ -1,6 +1,5 @@
 package com.telusko.app;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -10,8 +9,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.telusko.model.Products;
-
-import jakarta.persistence.Query;
 
 public class ProductsRetrievalHQL {
 
