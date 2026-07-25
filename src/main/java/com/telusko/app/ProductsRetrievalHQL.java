@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.telusko.model.Products;
 
@@ -33,10 +34,17 @@ Configuration configuration = null;
 		try {
 			
 			transaction = session.beginTransaction();
-			 List<Products> resultList = session
-										.createQuery("from Products",Products.class)
-			 						    .getResultList();
-			resultList.forEach((p)->System.out.println(p));
+//			 List<Products> resultList = session
+//										.createQuery("from Products",Products.class)
+//			 						    .getResultList();
+//          resultList.forEach((p)->System.out.println(p));
+//<-------------------------------------------------------------------------------------------------------->			
+			 Query<Products> query = session.createQuery("from Products where category =:category",Products.class);
+			 query.setParameter("category", "Electronics");
+			 List<Products> list = query.list();
+			 
+			list.forEach((p) -> System.out.println(p));
+			
 			flag = true;
 			
 		} catch (HibernateException e) {
