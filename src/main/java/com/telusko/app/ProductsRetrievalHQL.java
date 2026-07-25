@@ -39,11 +39,15 @@ Configuration configuration = null;
 //			 						    .getResultList();
 //          resultList.forEach((p)->System.out.println(p));
 //<-------------------------------------------------------------------------------------------------------->			
-			 Query<Products> query = session.createQuery("from Products where category =:category",Products.class);
+//			 Query<Products> query = session.createQuery("from Products where category =:category",Products.class);
+//			 query.setParameter("category", "Electronics");
+//			 List<Products> list = query.list();
+//			 list.forEach((p) -> System.out.println(p));
+//<-------------------------------------------------------------------------------------------------------->
+			 Query<String> query = session.createQuery("select productName from Products where category =:category",String.class);
 			 query.setParameter("category", "Electronics");
-			 List<Products> list = query.list();
-			 
-			list.forEach((p) -> System.out.println(p));
+			 List<String> list = query.list();
+			 list.forEach((p) -> System.out.println(p));
 			
 			flag = true;
 			
