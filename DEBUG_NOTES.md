@@ -144,3 +144,31 @@ table exists in the parent table.
 
 Status:
 ✅ Resolved
+------------------------------------------------------------
+Error #005
+------------------------------------------------------------
+
+Date:
+25-Jul-2026
+
+Topic:
+Hibernate persist()
+
+Error Message:
+Unknown entity type 'java.util.ArrayList'
+('ArrayList' is not annotated '@Entity')
+
+Cause:
+An ArrayList was passed to session.persist() instead of an
+entity object.
+
+Solution:
+Call persist() only on entity classes annotated with @Entity,
+such as Student, Course, Product, etc.
+
+Learning:
+Hibernate manages entity objects, not Java collections. A List
+can contain entities, but the List itself is not an entity.
+
+Status:
+✅ Resolved
