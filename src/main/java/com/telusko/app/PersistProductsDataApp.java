@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.telusko.model.Products;
 
-public class HibernateQueryLangApp {
+public class PersistProductsDataApp {
 
 	public static void main(String[] args) {
 		
