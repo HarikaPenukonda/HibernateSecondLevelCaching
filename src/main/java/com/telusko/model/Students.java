@@ -23,10 +23,11 @@ public class Students {
 	private String student_name;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(
+	// Think of it as Hibernate saying: "Create a third table to store the relationship between Student and Course."
+	@JoinTable( // @JoinTable creates a third table, Students_Courses - This table stores only the relationships.
 		name = "Students_Courses",
-		joinColumns = @JoinColumn(name="student_id"),
-		inverseJoinColumns = @JoinColumn(name="course_id"))
+		joinColumns = @JoinColumn(name="student_id"), // "The foreign key for the owning entity (Student) is student_id."
+		inverseJoinColumns = @JoinColumn(name="course_id")) // The foreign key for the other entity (Course) is course_id."
 	private Set<Courses> courses;
 
 	

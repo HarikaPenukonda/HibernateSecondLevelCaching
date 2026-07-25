@@ -111,3 +111,36 @@ Answer:
 
 Status:
 ✅ Resolved
+
+------------------------------------------------------------
+Error #004
+------------------------------------------------------------
+
+Date:
+23-Jul-2026
+
+Topic:
+Hibernate Many-to-Many Mapping
+
+Error Message:
+GenerationTarget encountered exception accepting command:
+Cannot add or update a child row: a foreign key constraint fails
+
+Cause:
+Hibernate attempted to create a foreign key between
+Students_Courses.course_id and Courses.course_id, but the
+Students_Courses table already contains course_id values that
+do not exist in the Courses table.
+
+Solution:
+- Delete invalid records from Students_Courses.
+- Drop the join table and let Hibernate recreate it.
+- Ensure Course entities are saved before creating the relationship.
+- Verify @ManyToMany mapping and @JoinTable annotations.
+
+Learning:
+A foreign key can only be created if every value in the child
+table exists in the parent table.
+
+Status:
+✅ Resolved

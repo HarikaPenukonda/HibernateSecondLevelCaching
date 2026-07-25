@@ -1,8 +1,5 @@
 package com.telusko.app;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
