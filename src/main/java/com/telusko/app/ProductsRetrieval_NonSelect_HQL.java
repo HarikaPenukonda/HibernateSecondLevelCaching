@@ -35,8 +35,11 @@ Configuration configuration = null;
 		try {
 			
 			transaction = session.beginTransaction();
-			count = session.createMutationQuery("UPDATE Products set price =:price where productName =:productName")
-					.setParameter("price", 699.99).setParameter("productName", "Xbox-console").executeUpdate();
+//			count = session.createMutationQuery("UPDATE Products set price =:price where productName =:productName")
+//					.setParameter("price", 699.99).setParameter("productName", "Xbox-console").executeUpdate();
+			
+		    count = session.createMutationQuery("DELETE Products where productId =:productId")
+						.setParameter("productId", 1004).executeUpdate();
 			flag = true;
 			
 		} catch (HibernateException e) {
